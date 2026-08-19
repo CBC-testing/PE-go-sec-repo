@@ -1,0 +1,16 @@
+  apiVersion: automation.cloudbees.io/v1alpha1
+  kind: workflow
+  name: auto-pe-rw-job-boundary
+  on:
+    workflow_call: {}
+  jobs:
+    rw-job:
+      steps:
+        - name: Run
+          uses: docker://alpine:3.19
+          run: echo "reusable workflow job"
+    independent-job:
+      steps:
+        - name: Run step
+          uses: docker://alpine:3.18
+          run: echo "independent-job running"
